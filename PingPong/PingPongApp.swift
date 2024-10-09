@@ -11,7 +11,7 @@ import SwiftUI
 struct PingPongApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainPage()
         }
     }
 }

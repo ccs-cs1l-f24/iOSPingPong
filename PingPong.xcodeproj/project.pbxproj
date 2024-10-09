@@ -11,12 +11,10 @@
 		FC1B95972CB64CF80075CE6B /* pose_landmarker_lite.task in Resources */ = {isa = PBXBuildFile; fileRef = FC1B95962CB64CF80075CE6B /* pose_landmarker_lite.task */; };
 		FC9866E52CB349F100B74AA9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC9866DF2CB349F100B74AA9 /* Preview Assets.xcassets */; };
 		FC9866E62CB349F100B74AA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC9866E12CB349F100B74AA9 /* Assets.xcassets */; };
-		FC9866E72CB349F100B74AA9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9866E22CB349F100B74AA9 /* ContentView.swift */; };
 		FC9866E82CB349F100B74AA9 /* PingPongApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9866E32CB349F100B74AA9 /* PingPongApp.swift */; };
 		FC9866EB2CB34A1C00B74AA9 /* PingPongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9866E92CB34A1C00B74AA9 /* PingPongTests.swift */; };
 		FC9866EF2CB34A1F00B74AA9 /* PingPongUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9866EC2CB34A1F00B74AA9 /* PingPongUITests.swift */; };
 		FC9866F02CB34A1F00B74AA9 /* PingPongUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9866ED2CB34A1F00B74AA9 /* PingPongUITestsLaunchTests.swift */; };
-		FCFDECCA2CB5F5D800674F4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFDECC92CB5F5D800674F4F /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +41,6 @@
 		FC1B95962CB64CF80075CE6B /* pose_landmarker_lite.task */ = {isa = PBXFileReference; lastKnownFileType = file; path = pose_landmarker_lite.task; sourceTree = "<group>"; };
 		FC9866DF2CB349F100B74AA9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FC9866E12CB349F100B74AA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FC9866E22CB349F100B74AA9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FC9866E32CB349F100B74AA9 /* PingPongApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingPongApp.swift; sourceTree = "<group>"; };
 		FC9866E92CB34A1C00B74AA9 /* PingPongTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingPongTests.swift; sourceTree = "<group>"; };
 		FC9866EC2CB34A1F00B74AA9 /* PingPongUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingPongUITests.swift; sourceTree = "<group>"; };
@@ -51,13 +48,15 @@
 		FCDB8F252CB34539008427F1 /* PingPong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PingPong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCDB8F352CB3453A008427F1 /* PingPongTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PingPongTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCDB8F3F2CB3453A008427F1 /* PingPongUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PingPongUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FCFDECC92CB5F5D800674F4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		FC1B95912CB603BA0075CE6B /* Models */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Models; sourceTree = "<group>"; };
 		FC1B95922CB603C00075CE6B /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
 		FC1B95932CB603C40075CE6B /* ViewModels */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ViewModels; sourceTree = "<group>"; };
+		FC1B95982CB650890075CE6B /* Services */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Services; sourceTree = "<group>"; };
+		FC1B95A32CB6559D0075CE6B /* Utils */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Utils; sourceTree = "<group>"; };
+		FC1B95A72CB656D20075CE6B /* Configurations */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Configurations; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,15 +113,16 @@
 		FC9866E42CB349F100B74AA9 /* PingPong */ = {
 			isa = PBXGroup;
 			children = (
+				FC1B95A72CB656D20075CE6B /* Configurations */,
+				FC1B95A32CB6559D0075CE6B /* Utils */,
+				FC1B95982CB650890075CE6B /* Services */,
 				FC1B95962CB64CF80075CE6B /* pose_landmarker_lite.task */,
 				FC1B95932CB603C40075CE6B /* ViewModels */,
 				FC1B95922CB603C00075CE6B /* Views */,
 				FC1B95912CB603BA0075CE6B /* Models */,
 				FC9866E02CB349F100B74AA9 /* Preview Content */,
 				FC9866E12CB349F100B74AA9 /* Assets.xcassets */,
-				FC9866E22CB349F100B74AA9 /* ContentView.swift */,
 				FC9866E32CB349F100B74AA9 /* PingPongApp.swift */,
-				FCFDECC92CB5F5D800674F4F /* AppDelegate.swift */,
 			);
 			path = PingPong;
 			sourceTree = "<group>";
@@ -186,6 +186,9 @@
 				FC1B95912CB603BA0075CE6B /* Models */,
 				FC1B95922CB603C00075CE6B /* Views */,
 				FC1B95932CB603C40075CE6B /* ViewModels */,
+				FC1B95982CB650890075CE6B /* Services */,
+				FC1B95A32CB6559D0075CE6B /* Utils */,
+				FC1B95A72CB656D20075CE6B /* Configurations */,
 			);
 			name = PingPong;
 			productName = PingPong;
@@ -329,8 +332,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC9866E72CB349F100B74AA9 /* ContentView.swift in Sources */,
-				FCFDECCA2CB5F5D800674F4F /* AppDelegate.swift in Sources */,
 				FC9866E82CB349F100B74AA9 /* PingPongApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
