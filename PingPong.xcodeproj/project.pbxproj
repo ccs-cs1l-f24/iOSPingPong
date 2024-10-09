@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 63;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -51,6 +51,12 @@
 		FCDB8F3F2CB3453A008427F1 /* PingPongUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PingPongUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCFDECC92CB5F5D800674F4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		FC1B95912CB603BA0075CE6B /* Models */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Models; sourceTree = "<group>"; };
+		FC1B95922CB603C00075CE6B /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
+		FC1B95932CB603C40075CE6B /* ViewModels */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ViewModels; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		FCDB8F222CB34539008427F1 /* Frameworks */ = {
@@ -106,6 +112,9 @@
 		FC9866E42CB349F100B74AA9 /* PingPong */ = {
 			isa = PBXGroup;
 			children = (
+				FC1B95932CB603C40075CE6B /* ViewModels */,
+				FC1B95922CB603C00075CE6B /* Views */,
+				FC1B95912CB603BA0075CE6B /* Models */,
 				FC9866E02CB349F100B74AA9 /* Preview Content */,
 				FC9866E12CB349F100B74AA9 /* Assets.xcassets */,
 				FC9866E22CB349F100B74AA9 /* ContentView.swift */,
@@ -169,6 +178,11 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				FC1B95912CB603BA0075CE6B /* Models */,
+				FC1B95922CB603C00075CE6B /* Views */,
+				FC1B95932CB603C40075CE6B /* ViewModels */,
 			);
 			name = PingPong;
 			productName = PingPong;

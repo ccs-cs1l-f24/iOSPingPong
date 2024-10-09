@@ -12,49 +12,14 @@ struct ContentView: View {
                 .ignoresSafeArea()
             VStack {
                 HStack(spacing: 0) {
-                    scoreView(playerName: "Player A", score: $playerAScore, color: .blue)
-                    scoreView(playerName: "Player B", score: $playerBScore, color: .red)
+                    ScoreView(playerName: "Player A", score: $playerAScore, color: .blue)
+                    ScoreView(playerName: "Player B", score: $playerBScore, color: .red)
                 }
             }
         }
         .onAppear {
             configureCamera()
         }
-    }
-    
-    private func scoreView(playerName: String, score: Binding<Int>, color: Color) -> some View {
-        VStack(spacing: 16) {
-            Spacer()
-            Text(playerName)
-                .font(.headline)
-                .foregroundColor(.white)
-            Text("\(score.wrappedValue)")
-                .font(.system(size: 128, weight: .bold))
-                .foregroundColor(.white)
-            HStack {
-                Button(action: {
-                    if score.wrappedValue > 0 {
-                        score.wrappedValue -= 1
-                    }
-                }) {
-                    Text("-")
-                        .font(.system(size: 50, weight: .bold))
-                        .foregroundColor(.white)
-                        .padding(20)
-                }
-                Button(action: {
-                    score.wrappedValue += 1
-                }) {
-                    Text("+")
-                        .font(.system(size: 50, weight: .bold))
-                        .foregroundColor(.white)
-                        .padding(20)
-                }
-            }
-            Spacer()
-        }
-        .frame(maxWidth: .infinity)
-        .background(color.opacity(0.6))
     }
     
     private func configureCamera() {
