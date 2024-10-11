@@ -9,6 +9,7 @@ import SwiftUI
 import AVFoundation
 
 struct CameraView: View {
+    // TODO: try viewModel.poseLandmakerService.detectAsync(image, timestampInMilliseconds);
     @EnvironmentObject var viewModel: PoseDetectionViewModel
     
     var body: some View {
@@ -19,12 +20,6 @@ struct CameraView: View {
                     .onAppear {
                         viewModel.startCapture()
                     }
-                
-                if let pose = viewModel.detectedPos {
-                    Text("Pose detected: \(pose.landmarks[0])")
-                        .foregroundStyle(.white)
-                        .padding()
-                }
             }
         }
     }

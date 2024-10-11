@@ -11,7 +11,6 @@ import MediaPipeTasksVision
 import Combine
 
 class PoseDetectionViewModel: ObservableObject {
-    @Published var detectedPos: PoseLandmarkerResult?
     var cameraFeedService: CameraFeedService
     var poseLandmarkerService: PoseLandmarkerService?
     
