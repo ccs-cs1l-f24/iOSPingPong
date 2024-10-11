@@ -55,7 +55,6 @@
 		FC1B95922CB603C00075CE6B /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
 		FC1B95932CB603C40075CE6B /* ViewModels */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ViewModels; sourceTree = "<group>"; };
 		FC1B95982CB650890075CE6B /* Services */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Services; sourceTree = "<group>"; };
-		FC1B95A32CB6559D0075CE6B /* Utils */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Utils; sourceTree = "<group>"; };
 		FC1B95A72CB656D20075CE6B /* Configurations */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Configurations; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -114,7 +113,6 @@
 			isa = PBXGroup;
 			children = (
 				FC1B95A72CB656D20075CE6B /* Configurations */,
-				FC1B95A32CB6559D0075CE6B /* Utils */,
 				FC1B95982CB650890075CE6B /* Services */,
 				FC1B95962CB64CF80075CE6B /* pose_landmarker_lite.task */,
 				FC1B95932CB603C40075CE6B /* ViewModels */,
@@ -187,7 +185,6 @@
 				FC1B95922CB603C00075CE6B /* Views */,
 				FC1B95932CB603C40075CE6B /* ViewModels */,
 				FC1B95982CB650890075CE6B /* Services */,
-				FC1B95A32CB6559D0075CE6B /* Utils */,
 				FC1B95A72CB656D20075CE6B /* Configurations */,
 			);
 			name = PingPong;

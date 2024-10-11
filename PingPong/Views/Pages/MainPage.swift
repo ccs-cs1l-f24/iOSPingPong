@@ -9,6 +9,7 @@ struct MainPage: View {
     var body: some View {
         ZStack {
             CameraView()
+                .environmentObject(PoseDetectionViewModel())
             VStack {
                 HStack(spacing: 0) {
                     ScoreView(playerName: "Player A", score: $playerAScore, color: .blue)

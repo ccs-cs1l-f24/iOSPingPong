@@ -1,5 +1,5 @@
 //
-//  CameraManager.swift
+//  CameraFeedService.swift
 //  PingPong
 //
 //  Created by Dylan Lu on 10/8/24.
@@ -8,7 +8,7 @@
 import Foundation
 import AVFoundation
 
-class CameraManager: NSObject, ObservableObject {
+class CameraFeedService: NSObject, ObservableObject {
     let captureSession = AVCaptureSession()
     var onFrameCaptured: ((CMSampleBuffer) -> Void)?
 
@@ -35,7 +35,7 @@ class CameraManager: NSObject, ObservableObject {
     }
 }
 
-extension CameraManager: AVCaptureVideoDataOutputSampleBufferDelegate {
+extension CameraFeedService: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         onFrameCaptured?(sampleBuffer)
     }
