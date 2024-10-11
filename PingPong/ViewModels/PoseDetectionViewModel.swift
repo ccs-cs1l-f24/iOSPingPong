@@ -12,8 +12,8 @@ import Combine
 
 class PoseDetectionViewModel: ObservableObject {
     @Published var detectedPos: PoseLandmarkerResult?
-    private var cameraFeedService: CameraFeedService
-    private var poseLandmarkerService: PoseLandmarkerService?
+    var cameraFeedService: CameraFeedService
+    var poseLandmarkerService: PoseLandmarkerService?
     
     init() {
         cameraFeedService = CameraFeedService()

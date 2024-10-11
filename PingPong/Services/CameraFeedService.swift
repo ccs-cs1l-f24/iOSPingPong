@@ -31,7 +31,9 @@ class CameraFeedService: NSObject, ObservableObject {
     }
 
     func startCaptureSession() {
-        captureSession.startRunning()
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.captureSession.startRunning()
+        }
     }
 }
 

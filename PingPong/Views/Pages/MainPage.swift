@@ -19,6 +19,3 @@ struct MainPage: View {
         }
     }
 }
-#Preview (traits: .landscapeRight){
-    MainPage()
-}
