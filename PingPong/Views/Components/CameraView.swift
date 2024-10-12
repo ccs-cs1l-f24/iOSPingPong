@@ -13,15 +13,11 @@ struct CameraView: View {
     @EnvironmentObject var cameraViewModel: CameraViewModel
     
     var body: some View {
-        GeometryReader { geometry in
-            VStack {
-                CameraPreviewView(session: cameraViewModel.cameraFeedService.captureSession)
-                    .frame(width: geometry.size.width, height: geometry.size.height)
-                    .onAppear {
-                        cameraViewModel.startCapture()
-                    }
+        CameraPreviewView(session: cameraViewModel.cameraFeedService.captureSession)
+            .edgesIgnoringSafeArea(.all)
+            .onAppear {
+                cameraViewModel.startCapture()
             }
-        }
     }
 }
 
