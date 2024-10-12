@@ -9,16 +9,16 @@ import SwiftUI
 import AVFoundation
 
 struct CameraView: View {
-    // TODO: try viewModel.poseLandmakerService.detectAsync(image, timestampInMilliseconds);
-    @EnvironmentObject var viewModel: PoseDetectionViewModel
+    // TODO: try cameraViewModel.poseLandmakerService.detectAsync(image, timestampInMilliseconds);
+    @EnvironmentObject var cameraViewModel: CameraViewModel
     
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                CameraPreviewView(session: viewModel.cameraFeedService.captureSession)
+                CameraPreviewView(session: cameraViewModel.cameraFeedService.captureSession)
                     .frame(width: geometry.size.width, height: geometry.size.height)
                     .onAppear {
-                        viewModel.startCapture()
+                        cameraViewModel.startCapture()
                     }
             }
         }

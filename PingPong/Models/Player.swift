@@ -11,11 +11,17 @@ struct Player {
     let id: UUID
     var name: String
     var score: Int
+    var handedness: PlayerHandedness
+    
+    enum PlayerHandedness {
+        case left, right
+    }
 
-    init(name: String) {
+    init(name: String, handedness: PlayerHandedness) {
         self.id = UUID()
         self.name = name
         self.score = 0
+        self.handedness = handedness
     }
 
     mutating func incrementScore() {

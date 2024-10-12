@@ -5,28 +5,48 @@
 //  Created by Dylan Lu on 10/11/24.
 //
 
-
 struct Match {
-    var player1: Player
-    var player2: Player
-
-    init(player1Name: String, player2Name: String) {
-        self.player1 = Player(name: player1Name)
-        self.player2 = Player(name: player2Name)
+    var leftPlayer: Player
+    var rightPlayer: Player
+    var servingPlayer: PlayerSideOfTable
+    var isGameOver: Bool
+    
+    init(leftPlayerName: String, rightPlayerName: String) {
+        self.leftPlayer = Player(name: leftPlayerName, handedness: .right)
+        self.rightPlayer = Player(name: rightPlayerName, handedness: .right)
+        self.servingPlayer = .left
+        self.isGameOver = false
     }
-
-    func getLeadingPlayer() -> Player? {
-        if player1.score > player2.score {
-            return player1
-        } else if player2.score > player1.score {
-            return player2
-        } else {
-            return nil  // It's a tie
+    
+    func getLeadingPlayer() -> PlayerSideOfTable {
+        if(leftPlayer.score == rightPlayer.score) {
+            return .invalid
+        }
+        
+        if(leftPlayer.score > rightPlayer.score) {
+            return .left
+        }
+        else {
+            return .right
+        }
+        
+    }
+    
+    mutating func playerWonPoint(sideOfTable: PlayerSideOfTable) {
+        if(sideOfTable == .left) {
+            leftPlayer.incrementScore()
+        }
+        else {
+            rightPlayer.incrementScore()
         }
     }
-
+    
     mutating func resetMatch() {
-        player1.resetScore()
-        player2.resetScore()
+        leftPlayer.resetScore()
+        rightPlayer.resetScore()
     }
+}
+
+enum PlayerSideOfTable {
+    case left, right, invalid
 }

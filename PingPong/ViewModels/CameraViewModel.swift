@@ -10,7 +10,7 @@ import AVFoundation
 import MediaPipeTasksVision
 import Combine
 
-class PoseDetectionViewModel: ObservableObject {
+class CameraViewModel: ObservableObject {
     var cameraFeedService: CameraFeedService
     var poseLandmarkerService: PoseLandmarkerService?
     

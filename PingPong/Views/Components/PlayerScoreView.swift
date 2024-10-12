@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct ScoreView: View {
+struct PlayerScoreView: View {
     var playerName: String
-    @Binding var score: Int
+    var score: Int
     var color: Color
 
     var body: some View {
