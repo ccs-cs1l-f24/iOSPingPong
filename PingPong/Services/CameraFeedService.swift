@@ -27,12 +27,12 @@ class CameraFeedService: NSObject, ObservableObject {
         
         let videoOutput = AVCaptureVideoDataOutput()
         videoOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA]
-        videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoQueue"))
+        videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "com.PingPong.CameraFeedService.videoQueue"))
         captureSession.addOutput(videoOutput)
     }
     
     func startCaptureSession() {
-        DispatchQueue.main.async {
+        DispatchQueue.global(qos: .userInitiated).async {
             self.captureSession.startRunning()
         }
     }
