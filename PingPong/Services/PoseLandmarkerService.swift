@@ -3,9 +3,7 @@ import MediaPipeTasksVision
 import AVFoundation
 
 protocol PoseLandmarkerServiceLiveStreamDelegate: AnyObject {
-    func poseLandmarkerService(_ poseLandmarkerService: PoseLandmarkerService,
-                               didFinishDetection result: ResultBundle?,
-                               error: Error?)
+    func poseLandmarkerService(_ poseLandmarkerService: PoseLandmarkerService, didFinishDetection result: ResultBundle?, error: Error?)
 }
 
 class PoseLandmarkerService: NSObject {
@@ -18,7 +16,7 @@ class PoseLandmarkerService: NSObject {
     private var minTrackingConfidence: Float
     private var modelPath: String
     private var delegate: PoseLandmarkerDelegate
-
+    
     private init?(modelPath: String?,
                   runningMode: RunningMode,
                   numPoses: Int,
@@ -35,10 +33,10 @@ class PoseLandmarkerService: NSObject {
         self.minTrackingConfidence = minTrackingConfidence
         self.delegate = delegate
         super.init()
-
+        
         createPoseLandmarker()
     }
-
+    
     private func createPoseLandmarker() {
         let poseLandmarkerOptions = PoseLandmarkerOptions()
         poseLandmarkerOptions.runningMode = runningMode
@@ -51,44 +49,47 @@ class PoseLandmarkerService: NSObject {
         if runningMode == .liveStream {
             poseLandmarkerOptions.poseLandmarkerLiveStreamDelegate = self
         }
+        
         do {
             poseLandmarker = try PoseLandmarker(options: poseLandmarkerOptions)
         } catch {
             print(error)
         }
     }
-
+    
     static func liveStreamPoseLandmarkerService(
         modelPath: String?,
         numPoses: Int,
         minPoseDetectionConfidence: Float,
         minPosePresenceConfidence: Float,
         minTrackingConfidence: Float,
+        liveStreamDelegate: PoseLandmarkerServiceLiveStreamDelegate?,
         delegate: PoseLandmarkerDelegate) -> PoseLandmarkerService? {
-        let poseLandmarkerService = PoseLandmarkerService(
-            modelPath: modelPath,
-            runningMode: .liveStream,
-            numPoses: numPoses,
-            minPoseDetectionConfidence: minPoseDetectionConfidence,
-            minPosePresenceConfidence: minPosePresenceConfidence,
-            minTrackingConfidence: minTrackingConfidence,
-            delegate: delegate)
-        return poseLandmarkerService
-    }
-
+            let poseLandmarkerService = PoseLandmarkerService(
+                modelPath: modelPath,
+                runningMode: .liveStream,
+                numPoses: numPoses,
+                minPoseDetectionConfidence: minPoseDetectionConfidence,
+                minPosePresenceConfidence: minPosePresenceConfidence,
+                minTrackingConfidence: minTrackingConfidence,
+                delegate: delegate)
+            poseLandmarkerService?.liveStreamDelegate = liveStreamDelegate
+            return poseLandmarkerService
+        }
+    
     func detectAsync(
         sampleBuffer: CMSampleBuffer,
         orientation: UIImage.Orientation,
         timeStamps: Int) {
-        guard let image = try? MPImage(sampleBuffer: sampleBuffer, orientation: orientation) else {
-            return
+            guard let image = try? MPImage(sampleBuffer: sampleBuffer, orientation: orientation) else {
+                return
+            }
+            do {
+                try poseLandmarker?.detectAsync(image: image, timestampInMilliseconds: timeStamps)
+            } catch {
+                print(error)
+            }
         }
-        do {
-            try poseLandmarker?.detectAsync(image: image, timestampInMilliseconds: timeStamps)
-        } catch {
-            print(error)
-        }
-    }
 }
 
 extension PoseLandmarkerService: PoseLandmarkerLiveStreamDelegate {
@@ -96,10 +97,13 @@ extension PoseLandmarkerService: PoseLandmarkerLiveStreamDelegate {
         let resultBundle = ResultBundle(
             inferenceTime: Date().timeIntervalSince1970 * 1000 - Double(timestampInMilliseconds),
             poseLandmarkerResults: [result])
+        
+        // Calls the delegate that we define in the CameraViewModel
         liveStreamDelegate?.poseLandmarkerService(
             self,
             didFinishDetection: resultBundle,
-            error: error)
+            error: error
+        )
     }
 }
 

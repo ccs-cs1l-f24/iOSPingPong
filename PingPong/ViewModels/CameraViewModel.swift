@@ -27,6 +27,7 @@ class CameraViewModel: ObservableObject {
             minPoseDetectionConfidence: DefaultConstants.minPoseDetectionConfidence,
             minPosePresenceConfidence: DefaultConstants.minPosePresenceConfidence,
             minTrackingConfidence: DefaultConstants.minTrackingConfidence,
+            liveStreamDelegate: self,
             delegate: DefaultConstants.delegate
         )
     }
@@ -45,5 +46,27 @@ class CameraViewModel: ObservableObject {
     
     func startCapture() {
         cameraFeedService.startCaptureSession()
+    }
+}
+
+extension CameraViewModel: PoseLandmarkerServiceLiveStreamDelegate {
+    func poseLandmarkerService(_ poseLandmarkerService: PoseLandmarkerService, didFinishDetection result: ResultBundle?, error: Error?) {
+        // This delegate is called by the PoseLandmarkerService delegate, which processes data then gives it to us
+        
+        DispatchQueue.main.async { [weak self] in
+            guard let weakSelf = self else { return }
+            guard let poseLandmarkerResult = result?.poseLandmarkerResults.first as? PoseLandmarkerResult else { return }
+            // TODO: Detect hand raise on which side, depending on poseLandmarkerResult.landmarks
+            
+            if poseLandmarkerResult.landmarks.count >= 1 {
+                // process person A, depending on their side
+                print(poseLandmarkerResult.landmarks[0][15])
+            }
+            if poseLandmarkerResult.landmarks.count >= 2 {
+                // process person B, depending on their side (not the same side)
+            }
+            
+            
+        }
     }
 }
