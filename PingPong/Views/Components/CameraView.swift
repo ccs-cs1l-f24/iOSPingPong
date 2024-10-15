@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AVFoundation
+import UIKit
 
 struct CameraView: View {
     // TODO: try cameraViewModel.poseLandmakerService.detectAsync(image, timestampInMilliseconds);
@@ -39,6 +40,7 @@ struct CameraPreviewView: UIViewRepresentable {
             if let layer = uiView.layer.sublayers?.first as? AVCaptureVideoPreviewLayer {
                 layer.session = session
                 layer.frame = uiView.bounds
+                layer.connection?.videoRotationAngle = 180
             }
         }
     }

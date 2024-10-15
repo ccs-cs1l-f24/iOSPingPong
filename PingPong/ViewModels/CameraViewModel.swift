@@ -14,8 +14,12 @@ class CameraViewModel: ObservableObject {
     var cameraFeedService: CameraFeedService
     var poseLandmarkerService: PoseLandmarkerService?
     
+    @Published var match: Match
+    
     init() {
-        cameraFeedService = CameraFeedService()
+        self.cameraFeedService = CameraFeedService()
+        self.match = MatchService.instance.match
+        
         setupPoseLandmarkerService()
         setupCameraOutputHandler()
     }
@@ -38,7 +42,7 @@ class CameraViewModel: ObservableObject {
             guard let self = self else { return }
             self.poseLandmarkerService?.detectAsync(
                 sampleBuffer: frame,
-                orientation: .leftMirrored,
+                orientation: .right, // TODO: Set to actual thing
                 timeStamps: Int(Date().timeIntervalSince1970 * 1000)
             )
         }

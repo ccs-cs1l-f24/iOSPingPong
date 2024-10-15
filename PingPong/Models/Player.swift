@@ -27,6 +27,11 @@ struct Player {
     mutating func incrementScore() {
         score += 1
     }
+    
+    mutating func decrementScore() {
+        score -= 1
+        score = max(score, 0)
+    }
 
     mutating func resetScore() {
         score = 0

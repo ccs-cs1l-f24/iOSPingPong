@@ -9,9 +9,8 @@ struct MainPage: View {
         ZStack {
             CameraView()
                 .environmentObject(cameraViewModel)
-            //MatchScoreView()
-              //  .environmentObject(matchScoreViewModel)
-            
+            MatchScoreView()
+                .environmentObject(matchScoreViewModel)
         }
     }
 }

@@ -16,8 +16,4 @@ class MatchService: ObservableObject {
     private init() {
         self.match = Match(leftPlayerName: "Player A", rightPlayerName: "Player B")
     }
-    
-    func playerWonPoint(sideOfTable: PlayerSideOfTable) {
-        match.playerWonPoint(sideOfTable: sideOfTable)
-    }
 }

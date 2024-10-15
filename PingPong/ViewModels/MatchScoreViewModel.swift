@@ -20,4 +20,12 @@ class MatchScoreViewModel: ObservableObject {
             .assign(to: \ .match, on: self)
             .store(in: &cancellables)
     }
+    
+    func incrementScore(sideOfTable: PlayerSideOfTable) {
+        match.playerWonPoint(sideOfTable: sideOfTable)
+    }
+    
+    func decrementScore(sideOfTable: PlayerSideOfTable) {
+        
+    }
 }

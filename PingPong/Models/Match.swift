@@ -33,11 +33,20 @@ struct Match {
     }
     
     mutating func playerWonPoint(sideOfTable: PlayerSideOfTable) {
-        if(sideOfTable == .left) {
+        if sideOfTable == .left {
             leftPlayer.incrementScore()
         }
-        else {
+        if sideOfTable == .right {
             rightPlayer.incrementScore()
+        }
+    }
+    
+    mutating func playerRemovePoint(sideOfTable: PlayerSideOfTable) {
+        if sideOfTable == .left {
+            leftPlayer.decrementScore()
+        }
+        if sideOfTable == .right {
+            rightPlayer.decrementScore()
         }
     }
     
