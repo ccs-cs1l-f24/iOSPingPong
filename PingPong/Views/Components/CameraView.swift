@@ -26,7 +26,7 @@ struct CameraPreviewView: UIViewRepresentable {
     let session: AVCaptureSession
     
     func makeUIView(context: Context) -> UIView {
-        let view = UIView()
+        let view = UIView(frame: .zero)
         let layer = AVCaptureVideoPreviewLayer(session: session)
         layer.videoGravity = .resizeAspectFill
         view.layer.addSublayer(layer)
@@ -34,9 +34,12 @@ struct CameraPreviewView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIView, context: Context) {
-        if let layer = uiView.layer.sublayers?.first as? AVCaptureVideoPreviewLayer {
-            layer.session = session
-            layer.frame = uiView.bounds
+        DispatchQueue.main.async {
+            // Fits the camera on the screen if orientation changes?
+            if let layer = uiView.layer.sublayers?.first as? AVCaptureVideoPreviewLayer {
+                layer.session = session
+                layer.frame = uiView.bounds
+            }
         }
     }
 }
