@@ -11,7 +11,8 @@ struct MatchScoreView: View {
     
     @EnvironmentObject var matchScoreViewModel: MatchScoreViewModel
     
-    // TODO: Add buttons
+    // TODO: On point win, green border animation to indicate successful detection
+    // TODO: Dot indicator on each player side to show that a player is detected
     
     var body: some View {
         HStack(spacing: 0) {
@@ -45,16 +46,31 @@ struct PlayerScoreView: View {
     var onDecrementScoreClicked: (PlayerSideOfTable) -> Void
     
     var body: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 8) {
             Spacer()
             Text(playerName)
                 .font(.headline)
                 .foregroundColor(.white)
             Text("\(score)")
-                .font(.system(size: 128, weight: .bold))
+                .font(.system(size: 180, weight: .bold))
                 .foregroundColor(.white)
-            Button("Increment Score") {
-                onIncrementScoreClicked(playerSideOfTable)
+            HStack {
+                Button() {
+                    onDecrementScoreClicked(playerSideOfTable)
+                } label: {
+                    Image(systemName: "minus")
+                        .font(.system(size: 50, weight: .bold))
+                        .foregroundStyle(.white)
+                }
+                .padding(.trailing, 16)
+                
+                Button() {
+                    onIncrementScoreClicked(playerSideOfTable)
+                } label: {
+                    Image(systemName: "plus")
+                        .font(.system(size: 50, weight: .bold))
+                        .foregroundStyle(.white)
+                }
             }
             Spacer()
         }

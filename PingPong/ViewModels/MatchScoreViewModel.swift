@@ -26,6 +26,6 @@ class MatchScoreViewModel: ObservableObject {
     }
     
     func decrementScore(sideOfTable: PlayerSideOfTable) {
-        
+        match.playerRemovePoint(sideOfTable: sideOfTable)
     }
 }
