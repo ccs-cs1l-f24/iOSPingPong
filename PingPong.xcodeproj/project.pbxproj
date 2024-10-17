@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		058B2434C853989CE5345BCB /* Pods_PingPong.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1E2DEDFB2D67CB4001D8AD /* Pods_PingPong.framework */; };
 		FC1B95972CB64CF80075CE6B /* pose_landmarker_lite.task in Resources */ = {isa = PBXBuildFile; fileRef = FC1B95962CB64CF80075CE6B /* pose_landmarker_lite.task */; };
+		FC91E5B22CC0DBD2000897DD /* pose_landmarker_full.task in Resources */ = {isa = PBXBuildFile; fileRef = FC91E5B12CC0DBD2000897DD /* pose_landmarker_full.task */; };
 		FC9866E52CB349F100B74AA9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC9866DF2CB349F100B74AA9 /* Preview Assets.xcassets */; };
 		FC9866E62CB349F100B74AA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC9866E12CB349F100B74AA9 /* Assets.xcassets */; };
 		FC9866E82CB349F100B74AA9 /* PingPongApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9866E32CB349F100B74AA9 /* PingPongApp.swift */; };
@@ -39,6 +40,7 @@
 		215E8D58290769CFEF11A25A /* Pods-PingPong.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PingPong.debug.xcconfig"; path = "Target Support Files/Pods-PingPong/Pods-PingPong.debug.xcconfig"; sourceTree = "<group>"; };
 		6D1E2DEDFB2D67CB4001D8AD /* Pods_PingPong.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PingPong.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC1B95962CB64CF80075CE6B /* pose_landmarker_lite.task */ = {isa = PBXFileReference; lastKnownFileType = file; path = pose_landmarker_lite.task; sourceTree = "<group>"; };
+		FC91E5B12CC0DBD2000897DD /* pose_landmarker_full.task */ = {isa = PBXFileReference; lastKnownFileType = file; path = pose_landmarker_full.task; sourceTree = "<group>"; };
 		FC9866DF2CB349F100B74AA9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FC9866E12CB349F100B74AA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC9866E32CB349F100B74AA9 /* PingPongApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingPongApp.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				FC1B95A72CB656D20075CE6B /* Configurations */,
 				FC1B95982CB650890075CE6B /* Services */,
 				FC1B95962CB64CF80075CE6B /* pose_landmarker_lite.task */,
+				FC91E5B12CC0DBD2000897DD /* pose_landmarker_full.task */,
 				FC1B95932CB603C40075CE6B /* ViewModels */,
 				FC1B95922CB603C00075CE6B /* Views */,
 				FC1B95912CB603BA0075CE6B /* Models */,
@@ -280,6 +283,7 @@
 				FC9866E52CB349F100B74AA9 /* Preview Assets.xcassets in Resources */,
 				FC9866E62CB349F100B74AA9 /* Assets.xcassets in Resources */,
 				FC1B95972CB64CF80075CE6B /* pose_landmarker_lite.task in Resources */,
+				FC91E5B22CC0DBD2000897DD /* pose_landmarker_full.task in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

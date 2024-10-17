@@ -11,53 +11,57 @@ import UIKit
 
 struct PoseOverlayView: UIViewRepresentable {
     @Binding var poseOverlays: [PoseOverlay]
-
+    
     func makeUIView(context: Context) -> OverlayView {
         let view = OverlayView()
         view.backgroundColor = .clear
         return view
     }
-
+    
     func updateUIView(_ uiView: OverlayView, context: Context) {
-        uiView.updatePoseOverlays(poseOverlays)
+        DispatchQueue.main.async {
+            uiView.updatePoseOverlays(poseOverlays)
+        }
     }
 }
 
 class OverlayView: UIView {
     var poseOverlays: [PoseOverlay] = []
-
+    
     override func draw(_ rect: CGRect) {
         for poseOverlay in poseOverlays {
             drawLines(poseOverlay.lines)
             drawDots(poseOverlay.dots)
         }
     }
-
+    
     private func drawDots(_ dots: [CGPoint]) {
         for dot in dots {
             let dotRect = CGRect(
-                x: dot.x - 5,
-                y: dot.y - 5,
-                width: 10,
-                height: 10
+                x: dot.x * self.bounds.width - DefaultConstants.pointRadius / 2,
+                y: (1 - dot.y) * self.bounds.height - DefaultConstants.pointRadius / 2, // Flip vertically
+                width: DefaultConstants.pointRadius,
+                height: DefaultConstants.pointRadius
             )
             let path = UIBezierPath(ovalIn: dotRect)
-            UIColor.red.setFill()
+            DefaultConstants.pointFillColor.setFill()
+            DefaultConstants.pointColor.setStroke()
+            path.stroke()
             path.fill()
         }
     }
-
+    
     private func drawLines(_ lines: [Line]) {
         let path = UIBezierPath()
         for line in lines {
-            path.move(to: line.from)
-            path.addLine(to: line.to)
+            path.move(to: CGPoint(x: line.from.x * self.bounds.width, y: (1 - line.from.y) * self.bounds.height)) // Flip vertically
+            path.addLine(to: CGPoint(x: line.to.x * self.bounds.width, y: (1 - line.to.y) * self.bounds.height)) // Flip vertically
         }
-        path.lineWidth = 2
-        UIColor.green.setStroke()
+        path.lineWidth = DefaultConstants.lineWidth
+        DefaultConstants.lineColor.setStroke()
         path.stroke()
     }
-
+    
     func updatePoseOverlays(_ overlays: [PoseOverlay]) {
         self.poseOverlays = overlays
         setNeedsDisplay()

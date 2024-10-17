@@ -40,7 +40,7 @@ class CameraViewModel: ObservableObject {
             guard let self = self else { return }
             self.poseLandmarkerService?.detectAsync(
                 sampleBuffer: frame,
-                orientation: .right, // TODO: Set to actual thing
+                orientation: .up, // TODO: Set to actual thing
                 timeStamps: Int(Date().timeIntervalSince1970 * 1000)
             )
         }
