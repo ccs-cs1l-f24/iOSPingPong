@@ -1,6 +1,7 @@
 import UIKit
 import MediaPipeTasksVision
 import AVFoundation
+import Combine
 
 protocol PoseLandmarkerServiceLiveStreamDelegate: AnyObject {
     func poseLandmarkerService(_ poseLandmarkerService: PoseLandmarkerService, didFinishDetection result: ResultBundle?, error: Error?)
