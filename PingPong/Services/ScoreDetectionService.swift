@@ -14,20 +14,20 @@ class ScoreDetectionService: ObservableObject {
     var leftSidePlayer: PlayerHandDetectionService!
     var rightSidePlayer: PlayerHandDetectionService!
     
-    var match: Match
-    
     init() {
-        self.match = MatchService.instance.match
-        
         setupPlayers()
     }
     
     func setupPlayers() {
         leftSidePlayer = PlayerHandDetectionService(onPlayerWinsPoint: {
-            self.match.playerWonPoint(sideOfTable: .left)
+            DispatchQueue.main.async {
+                MatchService.shared.match.playerWonPoint(sideOfTable: .left)
+            }
         })
         rightSidePlayer = PlayerHandDetectionService(onPlayerWinsPoint: {
-            self.match.playerWonPoint(sideOfTable: .right)
+            DispatchQueue.main.async {
+                MatchService.shared.match.playerWonPoint(sideOfTable: .right)
+            }
         })
     }
 }
@@ -93,7 +93,6 @@ class PlayerHandDetectionService {
             else if !self.handRaiseCounted && currentTime.timeIntervalSince(self.handRaiseStartTime) >= DefaultConstants.handRaiseDurationThreshold {
                 self.onPlayerWinsPoint()
                 self.handRaiseCounted = true
-                print("Win point")
             }
         }
         // Else, reset hand check state

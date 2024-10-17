@@ -15,13 +15,11 @@ class CameraViewModel: ObservableObject {
     var poseLandmarkerService: PoseLandmarkerService?
     var scoreDetectionService: ScoreDetectionService
     
-    @Published var match: Match
     @Published var poseOverlays: [PoseOverlay] = []
     
     init() {
         cameraFeedService = CameraFeedService()
         scoreDetectionService = ScoreDetectionService()
-        match = MatchService.instance.match
         
         setupPoseLandmarkerService()
         setupCameraOutputHandler()
@@ -33,7 +31,6 @@ class CameraViewModel: ObservableObject {
             poseOverlayDelegate: self
         )
     }
-    
     
     private func setupCameraOutputHandler() {
         cameraFeedService.onFrameCaptured = { [weak self] frame in

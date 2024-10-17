@@ -7,25 +7,20 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 class MatchScoreViewModel: ObservableObject {
-    @Published var match: Match
-    private var cancellables: Set<AnyCancellable> = []
-    
     init() {
-        self.match = MatchService.instance.match
         
-        MatchService.instance.$match
-            .receive(on: DispatchQueue.main)
-            .assign(to: \ .match, on: self)
-            .store(in: &cancellables)
     }
     
     func incrementScore(sideOfTable: PlayerSideOfTable) {
-        match.playerWonPoint(sideOfTable: sideOfTable)
+        MatchService.shared.match.playerWonPoint(sideOfTable: sideOfTable)
+        MatchService.shared.match.leftPlayer.name = "HEYY"
+        
     }
     
     func decrementScore(sideOfTable: PlayerSideOfTable) {
-        match.playerRemovePoint(sideOfTable: sideOfTable)
+        MatchService.shared.match.playerRemovePoint(sideOfTable: sideOfTable)
     }
 }

@@ -11,6 +11,7 @@ struct MainPage: View {
                 .environmentObject(cameraViewModel)
             MatchScoreView()
                 .environmentObject(matchScoreViewModel)
+                .environmentObject(MatchService.shared)
             
         }
     }

@@ -10,6 +10,7 @@ import SwiftUI
 struct MatchScoreView: View {
     
     @EnvironmentObject var matchScoreViewModel: MatchScoreViewModel
+    @EnvironmentObject var matchService: MatchService
     
     // TODO: On point win, green border animation to indicate successful detection
     // TODO: Dot indicator on each player side to show that a player is detected
@@ -17,17 +18,17 @@ struct MatchScoreView: View {
     var body: some View {
         HStack(spacing: 0) {
             PlayerScoreView(
-                playerName: matchScoreViewModel.match.leftPlayer.name,
+                playerName: matchService.match.leftPlayer.name,
                 playerSideOfTable: .left,
-                score: matchScoreViewModel.match.leftPlayer.score,
+                score: matchService.match.leftPlayer.score,
                 color: .blue,
                 onIncrementScoreClicked: matchScoreViewModel.incrementScore,
                 onDecrementScoreClicked: matchScoreViewModel.decrementScore
             )
             PlayerScoreView(
-                playerName: matchScoreViewModel.match.rightPlayer.name,
+                playerName: matchService.match.rightPlayer.name,
                 playerSideOfTable: .right,
-                score: matchScoreViewModel.match.rightPlayer.score,
+                score: matchService.match.rightPlayer.score,
                 color: .red,
                 onIncrementScoreClicked: matchScoreViewModel.incrementScore,
                 onDecrementScoreClicked: matchScoreViewModel.decrementScore

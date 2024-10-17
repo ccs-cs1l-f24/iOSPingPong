@@ -9,11 +9,8 @@ import Foundation
 import Combine
 
 class MatchService: ObservableObject {
-    static let instance = MatchService()
+    static let shared = MatchService()
+    @Published var match: Match = Match(leftPlayerName: "Player A", rightPlayerName: "Player B")
     
-    @Published var match: Match
-    
-    private init() {
-        self.match = Match(leftPlayerName: "Player A", rightPlayerName: "Player B")
-    }
+    private init() {}
 }
