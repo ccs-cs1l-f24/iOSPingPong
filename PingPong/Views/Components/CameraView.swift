@@ -14,14 +14,17 @@ struct CameraView: View {
     @EnvironmentObject var cameraViewModel: CameraViewModel
     
     var body: some View {
-        CameraPreviewView(session: cameraViewModel.cameraFeedService.captureSession)
-            .edgesIgnoringSafeArea(.all)
-            .onAppear {
-                cameraViewModel.startCapture()
-            }
+        ZStack {
+            CameraPreviewView(session: cameraViewModel.cameraFeedService.captureSession)
+                .edgesIgnoringSafeArea(.all)
+                .onAppear {
+                    cameraViewModel.startCapture()
+                }
+            PoseOverlayView(poseOverlays: $cameraViewModel.poseOverlays)
+                .edgesIgnoringSafeArea(.all)
+        }
     }
 }
-
 
 struct CameraPreviewView: UIViewRepresentable {
     let session: AVCaptureSession

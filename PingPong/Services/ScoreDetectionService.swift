@@ -59,6 +59,8 @@ extension ScoreDetectionService: PoseLandmarkerServiceLiveStreamDelegate {
                 self.rightSidePlayer.update(isRaisingHand: isRaisingHand)
             }
         }
+        
+        
     }
 }
 
@@ -75,7 +77,6 @@ class PlayerHandDetectionService {
     
     func update(isRaisingHand: Bool) {
         // TODO: If we've been raising our hand long enough, give a point
-        print("Update", isRaisingHand)
         
         // Get current time
         let currentTime = Date()

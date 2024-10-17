@@ -8,7 +8,8 @@ protocol PoseLandmarkerServiceLiveStreamDelegate: AnyObject {
 }
 
 class PoseLandmarkerService: NSObject {
-    weak var liveStreamDelegate: PoseLandmarkerServiceLiveStreamDelegate?
+    weak var scoreDetectionDelegate: PoseLandmarkerServiceLiveStreamDelegate?
+    weak var poseOverlayDelegate: PoseLandmarkerServiceLiveStreamDelegate?
     var poseLandmarker: PoseLandmarker?
     private(set) var runningMode = RunningMode.liveStream
     private var numPoses: Int
@@ -40,41 +41,37 @@ class PoseLandmarkerService: NSObject {
     
     private func createPoseLandmarker() {
         let poseLandmarkerOptions = PoseLandmarkerOptions()
-        poseLandmarkerOptions.runningMode = runningMode
-        poseLandmarkerOptions.numPoses = numPoses
-        poseLandmarkerOptions.minPoseDetectionConfidence = minPoseDetectionConfidence
-        poseLandmarkerOptions.minPosePresenceConfidence = minPosePresenceConfidence
-        poseLandmarkerOptions.minTrackingConfidence = minTrackingConfidence
-        poseLandmarkerOptions.baseOptions.modelAssetPath = modelPath
+        poseLandmarkerOptions.runningMode = self.runningMode
+        poseLandmarkerOptions.numPoses = self.numPoses
+        poseLandmarkerOptions.minPoseDetectionConfidence = self.minPoseDetectionConfidence
+        poseLandmarkerOptions.minPosePresenceConfidence = self.minPosePresenceConfidence
+        poseLandmarkerOptions.minTrackingConfidence = self.minTrackingConfidence
+        poseLandmarkerOptions.baseOptions.modelAssetPath = self.modelPath
         poseLandmarkerOptions.baseOptions.delegate = delegate.delegate
-        if runningMode == .liveStream {
+        if self.runningMode == .liveStream {
             poseLandmarkerOptions.poseLandmarkerLiveStreamDelegate = self
         }
         
         do {
-            poseLandmarker = try PoseLandmarker(options: poseLandmarkerOptions)
+            self.poseLandmarker = try PoseLandmarker(options: poseLandmarkerOptions)
         } catch {
             print(error)
         }
     }
     
     static func liveStreamPoseLandmarkerService(
-        modelPath: String?,
-        numPoses: Int,
-        minPoseDetectionConfidence: Float,
-        minPosePresenceConfidence: Float,
-        minTrackingConfidence: Float,
-        liveStreamDelegate: PoseLandmarkerServiceLiveStreamDelegate?,
-        delegate: PoseLandmarkerDelegate) -> PoseLandmarkerService? {
+        scoreDetectionDelegate: PoseLandmarkerServiceLiveStreamDelegate?,
+        poseOverlayDelegate: PoseLandmarkerServiceLiveStreamDelegate?) -> PoseLandmarkerService? {
             let poseLandmarkerService = PoseLandmarkerService(
-                modelPath: modelPath,
+                modelPath: DefaultConstants.model.modelPath,
                 runningMode: .liveStream,
-                numPoses: numPoses,
-                minPoseDetectionConfidence: minPoseDetectionConfidence,
-                minPosePresenceConfidence: minPosePresenceConfidence,
-                minTrackingConfidence: minTrackingConfidence,
-                delegate: delegate)
-            poseLandmarkerService?.liveStreamDelegate = liveStreamDelegate
+                numPoses: DefaultConstants.numPoses,
+                minPoseDetectionConfidence: DefaultConstants.minPoseDetectionConfidence,
+                minPosePresenceConfidence: DefaultConstants.minPosePresenceConfidence,
+                minTrackingConfidence: DefaultConstants.minTrackingConfidence,
+                delegate: DefaultConstants.delegate)
+            poseLandmarkerService?.scoreDetectionDelegate = scoreDetectionDelegate
+            poseLandmarkerService?.poseOverlayDelegate = poseOverlayDelegate
             return poseLandmarkerService
         }
     
@@ -99,8 +96,15 @@ extension PoseLandmarkerService: PoseLandmarkerLiveStreamDelegate {
             inferenceTime: Date().timeIntervalSince1970 * 1000 - Double(timestampInMilliseconds),
             poseLandmarkerResults: [result])
         
-        // Calls the delegate that we define in the CameraViewModel
-        liveStreamDelegate?.poseLandmarkerService(
+        // Calls ScoreDetectionService
+        scoreDetectionDelegate?.poseLandmarkerService(
+            self,
+            didFinishDetection: resultBundle,
+            error: error
+        )
+        
+        // Updates the PoseOverlay in CameraViewModel
+        poseOverlayDelegate?.poseLandmarkerService(
             self,
             didFinishDetection: resultBundle,
             error: error
