@@ -12,7 +12,6 @@ struct MainPage: View {
             MatchScoreView()
                 .environmentObject(matchScoreViewModel)
                 .environmentObject(MatchService.shared)
-            
         }
     }
 }
