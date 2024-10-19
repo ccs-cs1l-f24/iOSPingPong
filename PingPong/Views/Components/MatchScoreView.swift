@@ -21,7 +21,7 @@ struct MatchScoreView: View {
                 playerName: matchService.match.leftPlayer.name,
                 playerSideOfTable: .left,
                 score: matchService.match.leftPlayer.score,
-                color: .blue,
+                color: .red,
                 onIncrementScoreClicked: matchScoreViewModel.incrementScore,
                 onDecrementScoreClicked: matchScoreViewModel.decrementScore
             )
@@ -29,7 +29,7 @@ struct MatchScoreView: View {
                 playerName: matchService.match.rightPlayer.name,
                 playerSideOfTable: .right,
                 score: matchService.match.rightPlayer.score,
-                color: .red,
+                color: .blue,
                 onIncrementScoreClicked: matchScoreViewModel.incrementScore,
                 onDecrementScoreClicked: matchScoreViewModel.decrementScore
             )

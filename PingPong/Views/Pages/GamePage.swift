@@ -1,7 +1,8 @@
 import SwiftUI
 import AVFoundation
 
-struct MainPage: View {
+struct GamePage: View {
+    
     var cameraViewModel = CameraViewModel()
     var matchScoreViewModel = MatchScoreViewModel()
     

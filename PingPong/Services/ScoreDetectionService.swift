@@ -43,13 +43,12 @@ extension ScoreDetectionService: PoseLandmarkerServiceLiveStreamDelegate {
             // Extract useful pose landmarks
             let noseLandmark = playerLandmarks[0]
             let leftWristLandmark = playerLandmarks[15]
-            let leftShoulderLandmark = playerLandmarks[11]
             
             // Check which side of screen
             let isLeftSide = noseLandmark.x < 0.5
             
             // Check if raising hand
-            let isRaisingHand = leftWristLandmark.y >= leftShoulderLandmark.y
+            let isRaisingHand = leftWristLandmark.y >= noseLandmark.y
             
             // Pass it to the corresponding player side hand detection service
             if isLeftSide {

@@ -10,14 +10,13 @@ import Combine
 import SwiftUI
 
 class MatchScoreViewModel: ObservableObject {
+    
     init() {
         
     }
     
     func incrementScore(sideOfTable: PlayerSideOfTable) {
         MatchService.shared.match.playerWonPoint(sideOfTable: sideOfTable)
-        MatchService.shared.match.leftPlayer.name = "HEYY"
-        
     }
     
     func decrementScore(sideOfTable: PlayerSideOfTable) {
