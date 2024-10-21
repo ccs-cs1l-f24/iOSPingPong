@@ -19,7 +19,7 @@ struct DefaultConstants {
     static let lineColor = UIColor(red: 0, green: 127/255.0, blue: 139/255.0, alpha: 1)
     
     // MediaPipe Model settings
-    static var numPoses: Int = 2
+    static var numPoses: Int = 8
     static var minPoseDetectionConfidence: Float = 0.5
     static var minPosePresenceConfidence: Float = 0.5
     static var minTrackingConfidence: Float = 0.5
